@@ -13,7 +13,7 @@ import TextField from '@mui/material/TextField';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { Link } from 'react-router-dom';
 
-export default function Login() {
+export default function Signup() {
     const useStyles = makeStyles({
         text1: {
             color: 'grey',

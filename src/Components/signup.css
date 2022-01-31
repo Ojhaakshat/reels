@@ -19,3 +19,12 @@
 .instaLogo img {
     width: 15vw;
 }
+
+@media only screen and (max-width: 620px) {
+    .signupcard{
+        width: 60%;
+    }
+    .instaLogo img{
+        width: 35%;
+    }
+}
