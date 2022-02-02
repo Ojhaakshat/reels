@@ -11,7 +11,7 @@ import { makeStyles } from '@mui/styles';
 import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import bg from '../Assets/insta.png'
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext,Image} from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
@@ -20,12 +20,13 @@ import img2 from '../Assets/img2.jpg'
 import img3 from '../Assets/img3.jpg'
 import img4 from '../Assets/img4.jpg'
 import img5 from '../Assets/img5.jpg'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 
+
 export default function Login() {
-    const store = useContext(AuthContext);
-    console.log(store);
+    // const store = useContext(AuthContext);
+    // console.log(store);
     const useStyles = makeStyles({
         text1: {
             color: 'grey',
@@ -40,6 +41,29 @@ export default function Login() {
         }
     })
     const classes = useStyles();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const {login} = useContext(AuthContext);
+
+    const handleSubmit = async ()=> {
+        try {
+            setError('')
+            setLoading(true);
+            let res = await login(email, password);
+            setLoading(false);
+            navigate('/');
+        } catch(err) {
+            setError(err);
+            setTimeout(() => {
+                setError('')
+            }, 2000)
+        }
+        setLoading(false);
+    }
+
   return (
       <div className='Loginwrapper'>
           <div className='imgcard' style={{backgroundImage:'url('+bg+')', backgroundSize: 'cover'}}>
@@ -74,15 +98,15 @@ export default function Login() {
                 </div>
                 <CardContent>
                     
-                    <Alert severity="error">This is an error alert — check it out!</Alert>
-                    <TextField id="outlined-basic" label="Email" variant="outlined" fullWidth={true} margin='dense'size='small'/>
-                    <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth={true} margin='dense'size='small'/>
+                    {error != '' && <Alert severity="error">{error}</Alert>}
+                    <TextField id="outlined-basic" label="Email" variant="outlined" fullWidth={true} margin='dense'size='small' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                    <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth={true} margin='dense'size='small' value={password} onChange={(e)=>setPassword(e.target.value)}/>
                     <Typography color='primary' className={classes.text2} variant="subtitle1">
                         Forgot Password ?
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button color='primary' fullWidth={true} variant='contained' margin='dense'>Log in</Button>
+                    <Button color='primary' fullWidth={true} variant='contained' margin='dense' disabled={loading} onClick={handleSubmit}>Log in</Button>
                 </CardActions>
             </Card>
             <Card variant='outlined' className={classes.card2}>
