@@ -101,8 +101,8 @@ export default function Login() {
                     {error != '' && <Alert severity="error">{error}</Alert>}
                     <TextField id="outlined-basic" label="Email" variant="outlined" fullWidth={true} margin='dense'size='small' value={email} onChange={(e)=>setEmail(e.target.value)}/>
                     <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth={true} margin='dense'size='small' value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                    <Typography color='primary' className={classes.text2} variant="subtitle1">
-                        Forgot Password ?
+                    <Typography color='primary' className={classes.text2} variant="subtitle1" > <Link to={'/forgotpass'}>
+                        Forgot Password ? </Link>
                     </Typography>
                 </CardContent>
                 <CardActions>

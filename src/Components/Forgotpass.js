@@ -7,16 +7,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './signup.css'
 import './Forgotpass.css'
-
 import Lock from '../Assets/Lock.png'
 import { makeStyles } from '@mui/styles';
 import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
-import { database, storage } from '../firebase';
 import { Divider } from '@mui/material';
 
 export default function Signup() {
@@ -53,7 +50,9 @@ export default function Signup() {
         try{
             setError('')
             setLoading(true)
-            let res = await resetpassword(email);
+            resetpassword(email)
+            // .then(() => Alert.alert('','Your password reset mail has been sent'))
+            // .catch(error => Alert.alert('Error', error.message));
             setLoading(false);
             navigate('/login');
             
