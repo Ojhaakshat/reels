@@ -64,10 +64,18 @@
 
 .video-modal video{
     height: 85vh;
-    width: 60vh;
+    width: 57vh;
 }
 
 .comment-modal{
     width: 50%;
     height: 100%;
+}
+
+.card1{
+    height: 70vh;
+}
+.unlike2{
+    color: grey;
+    cursor: pointer;
 }

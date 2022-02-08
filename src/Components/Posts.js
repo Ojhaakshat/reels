@@ -8,7 +8,11 @@ import Avatar from '@mui/material/Avatar';
 import Like from './Like';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import Dialog from '@mui/material/Dialog';
+import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
+import LikeModal from './LikeModal'
+import AddComment from './AddComment';
+import Comments from './Comments';
 
 function Posts({userData}) {
     const [posts,setPosts] = useState(null);
@@ -65,6 +69,18 @@ function Posts({userData}) {
                                                 <video autoPlay={true} muted="muted" controls>
                                                     <source src={post.pUrl}/>
                                                 </video>
+                                            </div>
+                                            <div className="comment-modal">
+                                                <Card className="card1" style={{padding:'1rem'}}>
+                                                    <Comments postData={post}/>
+                                                </Card>
+                                                <Card variant="outlined" className="card2">
+                                                    <Typography style={{padding:'0.4rem'}}>{post.likes.length==0?'Liked by nobody':`Liked by ${post.likes.length} users`}</Typography>
+                                                    <div style={{display:'flex'}}>
+                                                        <LikeModal postData={post} userData={userData} style={{display:'flex',alignItems:'center',justifyContent:'center'}}/>
+                                                        <AddComment style={{display:'flex',alignItems:'center',justifyContent:'center'}} userData={userData} postData={post}/>
+                                                    </div>
+                                                </Card>
                                             </div>
                                         </div>
                                     </Dialog>
