@@ -7,6 +7,34 @@
     scrollbar-width: none;
 }
 
-.video-container::-webkit-scrollbar {
+.videoContainer::-webkit-scrollbar {
     display: none;
+}
+
+.videos{
+    position: relative;
+}
+.fa{
+    position: absolute;
+    bottom: 7%;
+    left: 2%;
+}
+.fa h4{
+    margin: 0;
+    color: white;
+    margin-top: 8%;
+    margin-left: 18%;
+}
+.icon-styling{
+    position: absolute;
+    bottom: 3.5%;
+    left: 2.5%;
+}
+.like{
+    cursor: pointer;
+    color : #e74c3c
+}
+.unlike{
+    cursor: pointer;
+    color: white;
 }
