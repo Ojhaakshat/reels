@@ -1,0 +1,12 @@
+.videoContainer{
+    height: 80vh;
+    border-radius: 20px;
+    background-color: white;
+    overflow: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+}
+
+.video-container::-webkit-scrollbar {
+    display: none;
+}

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 import { database } from '../firebase';
 import Uploads from './Uploads'; 
+import Posts from './Posts';
 
 export default function Feed() {
 
@@ -26,5 +27,6 @@ export default function Feed() {
                     <button onClick={logout}>Log out</button>
                 </div>
                 <Uploads user={userData}/>
+                <Posts userData={userData}/>
             </div>);
 }
