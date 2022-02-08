@@ -16,19 +16,21 @@
 }
 .fa{
     position: absolute;
-    bottom: 7%;
+    bottom: 7.5%;
     left: 2%;
 }
 .fa h4{
     margin: 0;
-    color: white;
+    color: grey;
     margin-top: 8%;
     margin-left: 18%;
 }
 .icon-styling{
     position: absolute;
-    bottom: 3.5%;
+    bottom: 3%;
     left: 2.5%;
+    color: grey;
+
 }
 .like{
     cursor: pointer;
@@ -36,5 +38,36 @@
 }
 .unlike{
     cursor: pointer;
-    color: white;
+    color: grey;
+}
+.chatStyling{
+    position: absolute;
+    bottom: 3%;
+    left: 8.5%;
+    color: grey;
+
+}
+
+.modalContainer{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.video-modal{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-modal video{
+    height: 85vh;
+    width: 60vh;
+}
+
+.comment-modal{
+    width: 50%;
+    height: 100%;
 }

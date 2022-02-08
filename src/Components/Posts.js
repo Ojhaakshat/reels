@@ -6,9 +6,22 @@ import Video from './Video';
 import './Posts.css'
 import Avatar from '@mui/material/Avatar';
 import Like from './Like';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import Dialog from '@mui/material/Dialog';
+import Typography from '@mui/material/Typography';
 
 function Posts({userData}) {
     const [posts,setPosts] = useState(null);
+    const [open, setOpen] = useState(null);
+
+    const handleClickOpen = (id) => {
+        setOpen(id);
+    };
+
+    const handleClose = () => {
+        setOpen(null);
+    };
+
     useEffect(()=>{
         let postarr = []
         const unsubscribe = database.posts.orderBy('createdAt','desc').onSnapshot((snap)=>{
@@ -38,6 +51,23 @@ function Posts({userData}) {
                                             <h4>{userData.name}</h4>
                                         </div>
                                         <Like userData={userData} postData={post} />
+                                        <ChatBubbleIcon className='chatStyling' onClick={()=>handleClickOpen(post.pId)}/> 
+                                        <Dialog
+                                        open={open==post.pId}
+                                        onClose={handleClose}
+                                        aria-labelledby="alert-dialog-title"
+                                        aria-describedby="alert-dialog-description"
+                                        fullWidth ={true}
+                                        maxWidth = 'md'
+                                    >
+                                        <div className="modalContainer">
+                                            <div className="video-modal">
+                                                <video autoPlay={true} muted="muted" controls>
+                                                    <source src={post.pUrl}/>
+                                                </video>
+                                            </div>
+                                        </div>
+                                    </Dialog>
                                     </div>
                                 </React.Fragment>
 
