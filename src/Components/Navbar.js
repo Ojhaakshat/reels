@@ -54,7 +54,7 @@ export default function Navbar({userData}) {
   };
   const navigate = useNavigate();
   const handleProfileClick = ()=>{
-      navigate('/profile/{userData.uid}')
+      navigate(`/profile/${userData.userId}`)
   }
   const {logout} = useContext(AuthContext);
   const handleLogout = async()=>{

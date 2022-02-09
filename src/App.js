@@ -7,6 +7,7 @@ import { AuthProvider } from './Context/AuthContext';
 import Feed from './Components/Feed';
 import Authorization from './Components/Authorization';
 import Forgotpass from './Components/Forgotpass';
+import Profile from './Components/Profile';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           {/* <Route path = '/' element={<Feed/>}/> */}
           <Route element={<Authorization/>}>
             <Route path='/' element={<Feed/>}/>
+            <Route path='/profile/:id' element={<Profile/>}/>
           </Route>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>      
