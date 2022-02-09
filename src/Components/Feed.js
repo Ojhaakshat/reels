@@ -31,7 +31,7 @@ export default function Feed() {
                     </div> */}
                     <Uploads user={userData}/>
                     <Posts userData={userData}/>
-                </div>);
+                </div>
 
             </>)
 }
