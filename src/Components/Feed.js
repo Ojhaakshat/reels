@@ -4,6 +4,7 @@ import { AuthContext } from '../Context/AuthContext';
 import { database } from '../firebase';
 import Uploads from './Uploads'; 
 import Posts from './Posts';
+import Navbar from './Navbar';
 
 export default function Feed() {
 
@@ -21,12 +22,16 @@ export default function Feed() {
         return () => {unsub()}
     }, [user])
 
-    return (<div style={{display:'flex', justifyContent: 'center',alignItems: 'center', flexDirection: 'column'}}>
-                <div className='comp' style={{width:'50%'}}>
-                    <h1>Feeds</h1>
-                    <button onClick={logout}>Log out</button>
-                </div>
-                <Uploads user={userData}/>
-                <Posts userData={userData}/>
-            </div>);
+    return (<>
+                <Navbar userData={userData} />
+                <div style={{display:'flex', justifyContent: 'center',alignItems: 'center', flexDirection: 'column'}}>
+                    {/* <div className='comp' style={{width:'50%'}}>
+                        <h1>Feeds</h1>
+                        <button onClick={logout}>Log out</button>
+                    </div> */}
+                    <Uploads user={userData}/>
+                    <Posts userData={userData}/>
+                </div>);
+
+            </>)
 }
