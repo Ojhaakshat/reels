@@ -26,6 +26,7 @@ function Posts({userData}) {
         setOpen(null);
     };
 
+   
     useEffect(()=>{
         let postarr = []
         const unsubscribe = database.posts.orderBy('createdAt','desc').onSnapshot((snap)=>{
@@ -38,6 +39,31 @@ function Posts({userData}) {
         })
         return unsubscribe
     },[])
+
+    const callback = entries => {
+        entries.forEach(entry => {
+            let ele = entry.target.childNodes[0];
+            console.log(ele);
+            ele.play().then(()=> {
+                if(!ele.paused && !entry.isIntersecting){
+                    ele.pause()
+                }
+            })
+        })
+    }
+
+    let observer = new IntersectionObserver(callback, {threshold: 0.6});
+    useEffect(()=> {
+        const elements = document.querySelectorAll('.videos');
+        elements.forEach(element => {
+            observer.observe(element);
+        })
+
+        return ()=> {
+            observer.disconnect();
+        }
+    }, [posts])
+
   return (
         <div>
             {
